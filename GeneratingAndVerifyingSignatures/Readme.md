@@ -30,7 +30,6 @@ Was imported and generated in IntelliJ IDEA, however can be run in console as sh
 i864532@C02CH3VAMD6N GeneratingAndVerifyingSignatures % java src/co/edu/unal/cybersecurity/GenSig.java input/data
 i864532@C02CH3VAMD6N GeneratingAndVerifyingSignatures % java src/co/edu/unal/cybersecurity/VerSig.java output/suepk output/sig input/data
 signature verifies: true
-i864532@C02CH3VAMD6N GeneratingAndVerifyingSignatures % 
 ```
 
 
