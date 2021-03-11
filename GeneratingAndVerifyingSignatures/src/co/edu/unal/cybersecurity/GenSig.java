@@ -49,13 +49,13 @@ public class GenSig {
             byte[] realSig = signature.sign();
 
             // Saving signatures in a file.
-            FileOutputStream fileOutputStream = new FileOutputStream("sig");
+            FileOutputStream fileOutputStream = new FileOutputStream("output/sig");
             fileOutputStream.write(realSig);
             fileOutputStream.close();
 
             //Saving public key in a file.
             byte[] key = publicKey.getEncoded();
-            FileOutputStream keyFileOutputStream = new FileOutputStream("suepk");
+            FileOutputStream keyFileOutputStream = new FileOutputStream("output/suepk");
             keyFileOutputStream.write(key);
             keyFileOutputStream.close();
 
