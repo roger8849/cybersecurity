@@ -77,10 +77,10 @@ Getting the value of the attribute `Name`
 #### Transaction evidences in ganache.
 
 Wallet transactions discounted:
-
+![Ganache wallets](evidences/ganache-wallet-transactions.png)
 
 Blockchain transactions:
+![Ganache transactions](evidences/ganache-blockchain.png)
 
-
-
-
+Transaction detail.
+![Ganache transaction detail](evidences/ganache-transaction-detail.png)
