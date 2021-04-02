@@ -41,9 +41,9 @@ The deprecated version of the Ethereum wallet chrome plugin was installed, mainl
 ### Adding Ganache mockup wallet.
 Mockup wallet with 100 ethers to be able to transact with the contract:
 
-![Ganache wallet added](my-ether-wallet-ganache-wallet-added.png)
+![Ganache wallet added](evidences/my-ether-wallet-ganache-wallet-added.png)
 
-![Ganache wallet view](my-ether-wallet-view.png)
+![Ganache wallet view](evidences/my-ether-wallet-view.png)
 
 ### Deploying the contract.
 With the [Bytecode](contracts/gensrc/SimpleContractBytecode.txt) attribute called `object` is added to deploy the contract in ether wallet.
