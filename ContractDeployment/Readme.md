@@ -30,8 +30,10 @@ This contract was deployed using Remix Ethereum online editor to speed up the pr
 
 #### Remix ethereum compiler:
 
-![Image](evidences/remix-compiler-version.png)
+![Remix compiler version](evidences/remix-compiler-version.png)
 
 ### Installing the MyEthereumWallet
 
 The deprecated version of the Ethereum wallet chrome plugin was installed, mainly because new versions of the plugin doesn't allow to connect to localhost instances to deploy the contrats or use localhost mocked wallets.
+
+![Opera my ether wallet installed](evidences/my-ether-wallet-installed.png)
