@@ -11,14 +11,20 @@
     + [Setting the values for id and name.](#setting-the-values-for-id-and-name)
     + [Getting the values for id and name.](#getting-the-values-for-id-and-name)
     + [Transaction evidences in ganache.](#transaction-evidences-in-ganache)
+- [Using Geth Ethereum](#using-geth-ethereum)
 
 
 ## Introduction
-Along this simple repository I've done a proof of concept about Smart contracts using blockchain. All the information here it's mocked and the tools used are meant to be tested in local environments. Toolset:
+Along this simple repository I've done a proof of concept about Smart contracts using blockchain. First section creates and deploys a contract in a local instnace using Ganache [Testing Simple smart contract.](#testing-simple-smart-contract).
+
+The second section uses Geth Ethereum to connect my ether wallet to a local instance of the Blockchain: [Using Geth Ethereum](#using-geth-ethereum).
+
+All the information here it's mocked and the tools used are meant to be tested in local environments. Toolset:
 
 - [Ethereum wallet v3.4.0](https://github.com/MyEtherWallet/etherwallet/releases/tag/v3.40.0)
 - [Ganache](https://www.trufflesuite.com/ganache)
 - [Remix Ethereum online editor](https://remix.ethereum.org)
+- [Geth Go Ethereum](https://geth.ethereum.org/docs/install-and-build/installing-geth)
 
 ## Testing Simple smart contract.
 
@@ -90,3 +96,14 @@ Blockchain transactions:
 
 Transaction detail.
 ![Ganache transaction detail](evidences/ganache-transaction-detail.png)
+
+
+## Using Geth Ethereum
+
+The idea behind this section is to connect my ether wallet to a local instance of the blockchain, using Geth Ethereum.
+
+### Generating `Genesis.json`
+
+First the directory [](ethereum) was created to generate the geth local ethereum instance. and after that the file [](ethereum/genesis.json) was created, from the repository: https://gist.github.com/0mkara/b953cc2585b18ee098cd 
+
+![Genesis.json](evidences/genesis-json)
