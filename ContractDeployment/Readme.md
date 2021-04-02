@@ -43,22 +43,43 @@ Mockup wallet with 100 ethers to be able to transact with the contract:
 
 ![Ganache wallet added](evidences/my-ether-wallet-ganache-wallet-added.png)
 
+My ether wallets your wallets:
+
 ![Ganache wallet view](evidences/my-ether-wallet-view.png)
 
 ### Deploying the contract.
 With the [Bytecode](contracts/gensrc/SimpleContractBytecode.txt) attribute called `object` is added to deploy the contract in ether wallet.
 
-
+![Contract deployed](evidences/contract-deployed.png)
 
 ### Interacting with the contract.
 
 #### Setting the values for id and name.
+Setting the value of `123456` for the attribute `id`
 
+![Set id](evidences/contract-interact-setId.png)
+
+Setting the value of `Roger` for the attribute `Name`
+
+![Set name](evidences/contract-interact-setName.png)
 
 #### Getting the values for id and name.
 
+Getting the value of the attribute `id`
+
+![Get id](evidences/contract-interact-getId.png)
+
+Getting the value of the attribute `Name`
+
+![Set id](evidences/contract-interact-getName.png)
+
 
 #### Transaction evidences in ganache.
+
+Wallet transactions discounted:
+
+
+Blockchain transactions:
 
 
 
