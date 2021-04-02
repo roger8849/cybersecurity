@@ -5,6 +5,12 @@
   * [Creating the contract](#creating-the-contract)
     + [Remix ethereum compiler:](#remix-ethereum-compiler-)
   * [Installing the MyEthereumWallet](#installing-the-myethereumwallet)
+  * [Adding Ganache mockup wallet.](#adding-ganache-mockup-wallet)
+  * [Deploying the contract.](#deploying-the-contract)
+  * [Interacting with the contract.](#interacting-with-the-contract)
+    + [Setting the values for id and name.](#setting-the-values-for-id-and-name)
+    + [Getting the values for id and name.](#getting-the-values-for-id-and-name)
+    + [Transaction evidences in ganache.](#transaction-evidences-in-ganache)
 
 
 ## Introduction
