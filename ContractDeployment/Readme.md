@@ -1,5 +1,13 @@
 # Blockchain -  Proof of concept Smart Contracts 
+## Table of contents.
+- [Introduction](#introduction)
+- [Testing Simple smart contract.](#testing-simple-smart-contract)
+  * [Creating the contract](#creating-the-contract)
+    + [Remix ethereum compiler:](#remix-ethereum-compiler-)
+  * [Installing the MyEthereumWallet](#installing-the-myethereumwallet)
 
+
+## Introduction
 Along this simple repository I've done a proof of concept about Smart contracts using blockchain. All the information here it's mocked and the tools used are meant to be tested in local environments. Toolset:
 
 - [Ethereum wallet v3.4.0](https://github.com/MyEtherWallet/etherwallet/releases/tag/v3.40.0)
