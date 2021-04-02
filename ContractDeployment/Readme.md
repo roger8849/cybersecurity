@@ -25,8 +25,8 @@ This contract only sets two attributes: `id` and `name` with it's accessors gett
 
 This contract was deployed using Remix Ethereum online editor to speed up the process and avoid to compile it locally. The ABI files and the bytecode was extracted from the online editor.
 
-- [ABI](contracts/gensrc/ABI.json)
-- [Bytecode](contracts/gensrc/Bytecode.txt)
+- [ABI](contracts/gensrc/SimpleContractABI.json)
+- [Bytecode](contracts/gensrc/SimpleContractBytecode.txt)
 
 #### Remix ethereum compiler:
 
@@ -37,3 +37,29 @@ This contract was deployed using Remix Ethereum online editor to speed up the pr
 The deprecated version of the Ethereum wallet chrome plugin was installed, mainly because new versions of the plugin doesn't allow to connect to localhost instances to deploy the contrats or use localhost mocked wallets.
 
 ![Opera my ether wallet installed](evidences/my-ether-wallet-installed.png)
+
+### Adding Ganache mockup wallet.
+Mockup wallet with 100 ethers to be able to transact with the contract:
+
+![Ganache wallet added](my-ether-wallet-ganache-wallet-added.png)
+
+![Ganache wallet view](my-ether-wallet-view.png)
+
+### Deploying the contract.
+With the [Bytecode](contracts/gensrc/SimpleContractBytecode.txt) attribute called `object` is added to deploy the contract in ether wallet.
+
+
+
+### Interacting with the contract.
+
+#### Setting the values for id and name.
+
+
+#### Getting the values for id and name.
+
+
+#### Transaction evidences in ganache.
+
+
+
+
