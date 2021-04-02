@@ -8,6 +8,6 @@ Along this simple repository I've done a proof of concept about Smart contracts 
 ## Testing Simple smart contract.
 
 ### Creating the contract
-Firs the simple contract was created in the file as shwon below.
+Firs the simple contract was created in the file [SimpleContract](contract/SingleContract.sol) as shwon below.
 
-This contract only sets two attributes: `id` and `name`
+This contract only sets two attributes: `id` and `name` with it's accessors getters and setters.
