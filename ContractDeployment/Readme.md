@@ -106,4 +106,4 @@ The idea behind this section is to connect my ether wallet to a local instance o
 
 First the directory [](ethereum) was created to generate the geth local ethereum instance. and after that the file [](ethereum/genesis.json) was created, from the repository: https://gist.github.com/0mkara/b953cc2585b18ee098cd 
 
-![Genesis.json](evidences/genesis-json)
+![Genesis.json](evidences/genesis-json.png)
