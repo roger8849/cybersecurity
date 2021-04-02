@@ -9,6 +9,21 @@ Along this simple repository I've done a proof of concept about Smart contracts 
 ## Testing Simple smart contract.
 
 ### Creating the contract
-Firs the simple contract was created in the file [SimpleContract](contracts/SingleContract.sol) as shwon below.
+A simple contract was defined in the [SimpleContract](contracts/SingleContract.sol) as shown below.
+
+![SimpleContract](evidences/simple-contract.png)
 
 This contract only sets two attributes: `id` and `name` with it's accessors getters and setters.
+
+This contract was deployed using Remix Ethereum online editor to speed up the process and avoid to compile it locally. The ABI files and the bytecode was extracted from the online editor.
+
+- [ABI](contracts/gensrc/ABI.json)
+- [Bytecode](contracts/gensrc/Bytecode.txt)
+
+#### Remix ethereum compiler:
+
+![Image](evidences/remix-compiler-version.png)
+
+### Installing the MyEthereumWallet
+
+The deprecated version of the Ethereum wallet chrome plugin was installed, mainly because new versions of the plugin doesn't allow to connect to localhost instances to deploy the contrats or use localhost mocked wallets.
