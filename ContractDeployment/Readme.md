@@ -12,6 +12,9 @@
     + [Getting the values for id and name.](#getting-the-values-for-id-and-name)
     + [Transaction evidences in ganache.](#transaction-evidences-in-ganache)
 - [Using Geth Ethereum](#using-geth-ethereum)
+  * [Generating `Genesis.json`](#generating--genesisjson-)
+  * [Geth Setup](#geth-setup)
+  * [Connecting ether wallet to get localhost blockchain.](#connecting-ether-wallet-to-get-localhost-blockchain)
 
 
 ## Introduction
