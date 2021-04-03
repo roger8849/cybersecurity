@@ -107,3 +107,31 @@ The idea behind this section is to connect my ether wallet to a local instance o
 First the directory [](ethereum) was created to generate the geth local ethereum instance. and after that the file [](ethereum/genesis.json) was created, from the repository: https://gist.github.com/0mkara/b953cc2585b18ee098cd 
 
 ![Genesis.json](evidences/genesis-json.png)
+
+### Geth Setup 
+After the `genesis.json` file was created the blockchain starts in the port `8545` and in `localhost`:
+```
+geth --port 3000 --networkid 23422 --identity node1 --verbosity 3 --nodiscover --nat none --datadir firstBC --rpc --rpcaddr="localhost" --rpcport 8545 --rpccorsdomain="*" --rpcapi "admin,eth,net,web3,debug" console
+```
+![Geth setup localhost](evidences/geth-setup-localhost.png)
+
+### Connecting ether wallet to get localhost blockchain.
+
+After the geth setup is complete my ether wallet, can connect to the localhost geth blockchain:
+![Adding geth server](evidences/my-ether-wallet-adding-geth-server.png)
+
+Then through the console I created a wallet using the command `personal.newAccount('cybersecurity')`:
+
+![Geth account created](evidences/geth-account-created.png)
+
+and start the mining.
+
+![Geth mining.](evidences/geth-mining-started.png)
+
+Finally my ether wallet can connect to the wallet created before using the keystore file:
+
+![Geth wallet adding](evidences/my-ether-wallet-get-addwallet.png)
+
+My ether wallet added from geth:
+
+![Geth wallet added](evidences/my-ether-wallet-geth-ganache.png)
