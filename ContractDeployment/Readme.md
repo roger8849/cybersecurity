@@ -104,7 +104,7 @@ The idea behind this section is to connect my ether wallet to a local instance o
 
 ### Generating `Genesis.json`
 
-First the directory [](ethereum) was created to generate the geth local ethereum instance. and after that the file [](ethereum/genesis.json) was created, from the repository: https://gist.github.com/0mkara/b953cc2585b18ee098cd 
+First the directory [ethereum](ethereum) was created to generate the geth local ethereum instance. and after that the file [genesis.json](ethereum/genesis.json) was created, from the repository: https://gist.github.com/0mkara/b953cc2585b18ee098cd 
 
 ![Genesis.json](evidences/genesis-json.png)
 
@@ -118,6 +118,7 @@ geth --port 3000 --networkid 23422 --identity node1 --verbosity 3 --nodiscover -
 ### Connecting ether wallet to get localhost blockchain.
 
 After the geth setup is complete my ether wallet, can connect to the localhost geth blockchain:
+
 ![Adding geth server](evidences/my-ether-wallet-adding-geth-server.png)
 
 Then through the console I created a wallet using the command `personal.newAccount('cybersecurity')`:
@@ -128,7 +129,7 @@ and start the mining.
 
 ![Geth mining.](evidences/geth-mining-started.png)
 
-Finally my ether wallet can connect to the wallet created before using the keystore file:
+Finally my ether wallet can connect to the wallet created before using the [keystore file](ethereum/firstBC/keystore/UTC--2021-04-02T23-46-28.089839000Z--4b94c55de8e6e6363528636c108040f8542a8633):
 
 ![Geth wallet adding](evidences/my-ether-wallet-get-addwallet.png)
 
