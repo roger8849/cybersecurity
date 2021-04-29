@@ -2,6 +2,13 @@
 Roger Ramírez Espejo.<br />
 Software engineer, architect and enthusiast.
 ## Table of contents.
+- [Introduction.](#introduction)
+- [Sniffer asking for IP Address of the machine.](#sniffer-asking-for-ip-address-of-the-machine)
+- [Sniffer script with filtering `ICMP` Packages](#sniffer-script-with-filtering--icmp--packages)
+- [Sniffer script with filtering `TCP` Packages](#sniffer-script-with-filtering--tcp--packages)
+- [TCP Packets from IP `192.168.0.6` and port `23`](#tcp-packets-from-ip--19216806--and-port--23-)
+- [TCP Packets from subnet `10.0.0.0/8`](#tcp-packets-from-subnet--10000-8-)
+- [Spoofing ICMP Packets](#spoofing-icmp-packets)
 
 ## Introduction.
 This lab shows the usage of `scapy` library which will be used to display packets information and understand a bit more in dept use cases for this tools.
