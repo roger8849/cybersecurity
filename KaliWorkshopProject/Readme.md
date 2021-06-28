@@ -1,16 +1,33 @@
 # Kali Workshop hands on project.
 Roger Ramírez Espejo.<br />
-Software engineer, architect and enthusiast.
+Software engineer, architect and enthusiast. <br />
+Cybersecurity Project - Kali linux workshop
 ## Table of contents.
 
 
 ## Introduction.
-This project shows the usage of several tools provided by Kali linux, which help to evaluate the security of our technology appliances. 
+This project shows the usage of several tools provided by [Kali linux](https://www.kali.org/), which help to evaluate the security of our technology appliances. In this workshop there were used the following versions of Kali Linux:
 
-The content contained here is only displayed for educational purposes and their usage is not responsibility of the author.
+![Kali versions](evidences/0.1_Kali_Versions.png)
+- [Bare Metal](https://www.kali.org/get-kali/#kali-bare-metal): Installable version which was intalled in an old laptop. This version was used to execute the Wifi cracking section.
+- [Virtual Box - VM](https://www.kali.org/get-kali/#kali-virtual-machines): Virtual box version of the operative system. Used to execute the rest of the project except the Wifi cracking section.
 
-## DNS Recognize
-Sniffer that shows the address of the machine: 
+<br />
+
+## Information Gathering.
+This section shows the following tools:
+
+- [Dmitry](https://tools.kali.org/information-gathering/dmitry): DMitry (Deepmagic Information Gathering Tool) is a UNIX/(GNU)Linux Command Line Application coded in C. DMitry has the ability to gather as much information as possible about a host. Base functionality is able to gather possible subdomains, email addresses, uptime information, tcp port scan, whois lookups, and more. 
+- [DNSEnum](https://tools.kali.org/information-gathering/dnsenum): Multithreaded perl script to enumerate DNS information of a domain and to discover non-contiguous ip blocks.
+- [Nmap](https://nmap.org/): Mapping appliance which display the details of the devices connected to the current network.
+
+These tools are located under information gathering section in start menu in kali linux:
+
+![InformationGatherin](evidences/1.0_InformationGatherinToolsKali.png)
+
+### DNSEnum
+
+
 ```
 from scapy.all import *
 
