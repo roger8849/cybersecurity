@@ -589,4 +589,10 @@ As shown `OpenVAS` appliance is started in `https://localhost:9392`:
 
 
 
-## WiFi Cracking with Wifite and Aircrack-ng
+## WiFi Cracking with Wifite and Aircrack-ng.
+
+This section shows how to crack a Wifi password using 
+
+
+
+4.1_PutWLANInterfaceInMonitorMode.png
