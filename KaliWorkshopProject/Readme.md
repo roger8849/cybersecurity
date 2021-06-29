@@ -604,7 +604,7 @@ sudo gvm-start                                                  # Starts in http
 This section shows how to crack a Wifi password using Wifite and aircrack ng, tools:
 
 - [Wifite](https://tools.kali.org/information-gathering/nikto): To attack multiple WEP, WPA, and WPS encrypted networks in a row. This tool is customizable to be automated with only a few arguments. Wifite aims to be the “set it and forget it” wireless auditing tool.
-- [Burp suite](https://tools.kali.org/wireless-attacks/aircrack-ng): Aircrack-ng is an 802.11 WEP and WPA-PSK keys cracking program that can recover keys once enough data packets have been captured. It implements the standard FMS attack along with some optimizations like KoreK attacks, as well as the all-new PTW attack, thus making the attack much faster compared to other WEP cracking tools.
+- [Aircrack-ng](https://tools.kali.org/wireless-attacks/aircrack-ng): Aircrack-ng is an 802.11 WEP and WPA-PSK keys cracking program that can recover keys once enough data packets have been captured. It implements the standard FMS attack along with some optimizations like KoreK attacks, as well as the all-new PTW attack, thus making the attack much faster compared to other WEP cracking tools.
 
 ### Wifite Handshake extraction.
 
