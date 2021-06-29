@@ -485,6 +485,7 @@ This section displays different tools to scan vulnerabilities in the devices we 
 
 - [Nikto](https://tools.kali.org/information-gathering/nikto): Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers. It also checks for server configuration items such as the presence of multiple index files, HTTP server options, and will attempt to identify installed web servers and software. Scan items and plugins are frequently updated and can be automatically updated.
 - [Burp suite](https://tools.kali.org/information-gathering/nikto): Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers. It also checks for server configuration items such as the presence of multiple index files, HTTP server options, and will attempt to identify installed web servers and software. Scan items and plugins are frequently updated and can be automatically updated.
+- [OpenVAS](https://www.kali.org/blog/openvas-vulnerability-scanning/): Vulnerability scanning is a crucial phase of a penetration test and having an updated vulnerability scanner in your security toolkit can often make a real difference by helping you discover overlooked vulnerable items.
 
 These tools are under `vulnerability` menu in `Kali` tools:
 
@@ -568,4 +569,20 @@ Firefox will visit the website https://unal.edu.co and Burpsuite through its pro
 <br />
 
 <kbd>![Burpsuite vulnerabilities](evidences/3.7_BurpsuiteVulnerabilitiesPremium.png)</kbd>
+<br />
+
+
+### OpenVAS vulnerability scanning.
+OpenVAS is a tool which is not installed by default by Kali Linux. Reason why needs to be installed with the following commands:
+
+```
+sudo apt install gvm                                            # install OpenVAS
+sudo gvm-setup                                                  # populate databases takes a long time to complete
+sudo runuser -u _gvm -- gvmd --user=admin --new-password=admin  # change password to admin
+sudo gvm-start                                                  # Starts in https://localhost:9392
+```
+
+As shown `OpenVAS` appliance is started in `https://localhost:9392`:
+
+<kbd>![OpenVAS Startup](evidences/3.8_OpenVASStartup.png)</kbd>
 <br />
