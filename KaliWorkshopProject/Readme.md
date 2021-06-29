@@ -380,3 +380,64 @@ Nmap scan report for kali (192.168.50.251)
 Host is up.
 Nmap done: 256 IP addresses (9 hosts up) scanned in 2.37 seconds
 ```
+<br />
+
+Adding the `-PS` option will display the public process runnin in a server, like tested in the vulnerable server `192.168.50.91`:
+
+```
+$ sudo nmap -PS 192.168.50.91           
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-28 16:42 EDT
+Nmap scan report for 192.168.50.91 (192.168.50.91)
+Host is up (0.000099s latency).
+Not shown: 977 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh --------------------------------> Process which will be analyzed. 
+23/tcp   open  telnet
+25/tcp   open  smtp
+53/tcp   open  domain
+80/tcp   open  http
+111/tcp  open  rpcbind
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+512/tcp  open  exec
+513/tcp  open  login
+514/tcp  open  shell
+1099/tcp open  rmiregistry
+1524/tcp open  ingreslock
+2049/tcp open  nfs
+2121/tcp open  ccproxy-ftp
+3306/tcp open  mysql
+5432/tcp open  postgresql
+5900/tcp open  vnc
+6000/tcp open  X11
+6667/tcp open  irc
+8009/tcp open  ajp13
+8180/tcp open  unknown
+MAC Address: 08:00:27:E7:85:4F (Oracle VirtualBox virtual NIC)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.25 seconds
+```
+<br />
+
+The option `sV` over the port `22` will display the version of the `ssh` appliance:
+
+```
+$ sudo nmap -PS -sV -p 22 192.168.50.91
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-28 16:48 EDT
+Nmap scan report for 192.168.50.91 (192.168.50.91)
+Host is up (0.00040s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0) ---------------> Appliance version
+MAC Address: 08:00:27:E7:85:4F (Oracle VirtualBox virtual NIC)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 0.70 seconds
+```
+<br />
+
+With the `ssh` appliance information an attacker can identify its vulnerabilities by searching them in [NVD: National vulnerable database](https://nvd.nist.gov/vuln/search/results?form_type=Basic&results_type=overview&query=OpenSSH&search_type=all):
+
+<kbd>![NVD](evidences/2.3.6_Nmap_OpenSSHVulnerabilities.png)</kbd>
