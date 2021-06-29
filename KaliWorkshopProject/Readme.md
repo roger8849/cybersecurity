@@ -12,6 +12,20 @@ This project shows the usage of several tools provided by [Kali linux](https://w
 
 - [Bare Metal](https://www.kali.org/get-kali/#kali-bare-metal): Installable version which was intalled in an old laptop. This version was used to execute the Wifi cracking section.
 - [Virtual Box - VM](https://www.kali.org/get-kali/#kali-virtual-machines): Virtual box version of the operative system. Used to execute the rest of the project except the Wifi cracking section.
+- [Metasploitable - VM](): Vulnerable Server which will be during the workshop to show common vulnerabilities of the servers, displayed by the tools used here.
+
+### Metasploitable download and startup
+
+Metasploitable download page: https://sourceforge.net/projects/metasploitable/
+<br />
+<kbd>![Metasploitable download page](evidences/0.2_Metasploit_Download.png)</kbd>
+
+<br />
+<br />
+
+Vulnerable server configuration on `192.168.50.91`:
+<br />
+<kbd>![Metasploitable startup](evidences/0.3_Metasploit_Startup.png)</kbd>
 
 <br />
 
@@ -30,6 +44,8 @@ This section shows the following tools:
 These tools are located under information gathering section in start menu in kali linux:
 
 <kbd>![InformationGatherin](evidences/1.0_InformationGatherinToolsKali.png)</kbd>
+<br />
+<br />
 
 ### Deepmagic for reconnaissance
 The objective of this section is to explore the server information of sites such as [Rappi.com](https://rappi.com) and [Yahoo.com](https://yahoo.com) in order to reconnaisse their DNS information:
@@ -195,71 +211,172 @@ marceloaustria@yahoo.com
 citotia@yahoo.com
 ```
 
+Adding the options `pb` to our vulnerable server `192.168.50.91` will perform a tcp port scan on a host and read in the banner received from it:
 ```
-from scapy.all import *
+$ dmitry -pb 192.168.50.91 
+Deepmagic Information Gathering Tool
+"There be some deep magic going on"
 
-a = IP()
-a.show()
+HostIP:192.168.50.91
+HostName:192.168.50.91
+
+Gathered TCP Port information for 192.168.50.91
+---------------------------------
+
+ Port           State
+
+21/tcp          open
+>> 220 (vsFTPd 2.3.4)
+
+22/tcp          open
+>> SSH-2.0-OpenSSH_4.7p1 Debian-8ubuntu1
+
+23/tcp          open
+>> ��▒�� ��#��'
+25/tcp          open
+>> 220 metasploitable.localdomain ESMTP Postfix (Ubuntu)
+
+53/tcp          open
+zsh: segmentation fault  dmitry -pb 192.168.50.91
 ```
-Result:
-![Scapy show IP](evidences/Scapy_show_IP.png)
+<br />
+<br />
 
-## Sniffer script with filtering `ICMP` Packages
-Script:
-```
-from scapy.all import *
-
-def print_pkt(pkt):
-    pkt.show()
-pkt = sniff(filter='icmp', prn=print_pkt)
-```
-Result:
-
-![ICMP Packets](evidences/ICMP_Packets.png)
-
-## Sniffer script with filtering `TCP` Packages
-Script:
-```
-from scapy.all import *
-
-def print_pkt(pkt):
-    pkt.show()
-pkt = sniff(filter='tcp', prn=print_pkt)
-```
-Result
-
-![tcp Packets](evidences/TCP_Packets.png)
-
-
-## TCP Packets from IP `192.168.0.6` and port `23`
-Script:
+### DNS Enum for passive recognaisse
+DNS enum allows to enumerate all the DNS information for the domain [Rappi.com](https://rappi.com) to detect it's ip blocks. This information is retrieved by the attacker to recognaisse the network information of it's domain.
 
 ```
-from scapy.all import *
+$ dnsenum rappi.com                                                                                                                                                                                                                  130 ⨯
+dnsenum VERSION:1.2.6
 
-def print_pkt(pkt):
-    pkt.show()
-pkt = sniff(filter='tcp and src 192.168.50.165 and port 23', prn=print_pkt)
+-----   rappi.com   -----                                                                                                                                                                                                                         
+Host's addresses:                                                                                                                                                                                                                            
+__________________                                                                                                                                                                                                      
+rappi.com.                               59       IN    A        13.227.26.106                                                                                                                                                               
+rappi.com.                               59       IN    A        13.227.26.85
+rappi.com.                               59       IN    A        13.227.26.87
+rappi.com.                               59       IN    A        13.227.26.65
+
+Name Servers:                                                                                                                                                                                                                ______________                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                             
+ns-1908.awsdns-46.co.uk.                 21599    IN    A        205.251.199.116                                                                                                                                                             
+ns-62.awsdns-07.com.                     21599    IN    A        205.251.192.62
+ns-1254.awsdns-28.org.                   20168    IN    A        205.251.196.230
+ns-1018.awsdns-63.net.                   19939    IN    A        205.251.195.250
+
+                                                                                                                                                                                                                                             
+Mail (MX) Servers:                                                                                                                                                                                                                           
+___________________                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                             
+aspmx.l.google.com.                      292      IN    A        172.217.193.27                                                                                                                                                              
+alt3.aspmx.l.google.com.                 292      IN    A        142.250.153.27
+alt4.aspmx.l.google.com.                 292      IN    A        142.251.9.27
+alt1.aspmx.l.google.com.                 292      IN    A        209.85.202.27
+alt2.aspmx.l.google.com.                 292      IN    A        64.233.184.27
+
+                                                                                                                                                                                                                                             
+Trying Zone Transfers and getting Bind Versions:                                                                                                                                                                                             
+_________________________________________________                                                                                                                                                                                                                                                                                                                                                              
+Trying Zone Transfer for rappi.com on ns-1908.awsdns-46.co.uk ... 
+AXFR record query failed: corrupt packet
+
+Trying Zone Transfer for rappi.com on ns-62.awsdns-07.com ... 
+AXFR record query failed: corrupt packet
+
+Trying Zone Transfer for rappi.com on ns-1254.awsdns-28.org ... 
+AXFR record query failed: corrupt packet
+
+Trying Zone Transfer for rappi.com on ns-1018.awsdns-63.net ... 
+AXFR record query failed: corrupt packet
+                                                                                                                                                                                                                           
+Brute forcing with /usr/share/dnsenum/dns.txt:                                                                                                                                                                                               
+_______________________________________________                                                                                                                                                                                              
+                                                                                                                                                                                                                                             
+ads.rappi.com.                           299      IN    CNAME    duvs4i36c8yj8.cloudfront.net.                                                                                                                                               
+duvs4i36c8yj8.cloudfront.net.            59       IN    A        13.227.26.108
+duvs4i36c8yj8.cloudfront.net.            59       IN    A        13.227.26.38
+duvs4i36c8yj8.cloudfront.net.            59       IN    A        13.227.26.8
+duvs4i36c8yj8.cloudfront.net.            59       IN    A        13.227.26.86
+blog.rappi.com.                          59       IN    A        35.165.115.229
+blog.rappi.com.                          59       IN    A        35.163.107.0
+br.rappi.com.                            3599     IN    CNAME    soyrappi.com.
+soyrappi.com.                            59       IN    A        13.227.26.40
+soyrappi.com.                            59       IN    A        13.227.26.66
+soyrappi.com.                            59       IN    A        13.227.26.96
+soyrappi.com.                            59       IN    A        13.227.26.107
+jobs.rappi.com.                          299      IN    CNAME             (
+rappi-jobs-global-242617298.us-west-2.elb.amazonaws.com. 59       IN    A                 (
+rappi-jobs-global-242617298.us-west-2.elb.amazonaws.com. 59       IN    A                 (
+rappi-jobs-global-242617298.us-west-2.elb.amazonaws.com. 59       IN    A                 (
+mail.rappi.com.                          299      IN    CNAME    u1778784.wl035.sendgrid.net.
+mx.rappi.com.                            299      IN    CNAME    cms.mxgrability.rappi.com.
+syslog.rappi.com.                        59       IN    A        172.27.18.127
+syslog.rappi.com.                        59       IN    A        172.27.11.166
+syslog.rappi.com.                        59       IN    A        172.27.12.199
+vpn.rappi.com.                           299      IN    A        54.69.200.23
+www.rappi.com.                           48       IN    CNAME    d3k3efoimgx9br.cloudfront.net.
+d3k3efoimgx9br.cloudfront.net.           59       IN    A        13.227.26.87
+d3k3efoimgx9br.cloudfront.net.           59       IN    A        13.227.26.65
+d3k3efoimgx9br.cloudfront.net.           59       IN    A        13.227.26.106
+d3k3efoimgx9br.cloudfront.net.           59       IN    A        13.227.26.85
+
+                                                                                                                                                                                                                                             
+rappi.com class C netranges:                                                                                                                                                                                                                 
+_____________________________                                                                                                                                                                                           
+ 13.227.26.0/24                                                                                                                                                                                                                              
+ 35.163.107.0/24
+ 35.165.115.0/24
+ 54.69.200.0/24
+
+                                                                                                                                                                                                                                             
+Performing reverse lookup on 1024 ip addresses:                                                                                                                                                                                              
+________________________________________________                                                                                                                                                                        
+0 results out of 1024 IP addresses.
+
+                                                                                                                                                                                                                                             
+rappi.com ip blocks:                                                                                                                                                                                                                         
+_____________________                                                                                                                                                                                                          
+done.
+
 ```
+<br />
+<br />
 
-Result:
+### Nmap for active Recoginaisse of the servers.
 
-In first instance I couldn't capture any traffic because not traffic was generated in that port. But after runnin `telnet www.google.com` traffic could be captured:
+`Nmap` is one of the most important tools in order to retrieve information of the network. Basically scans the devices connected to the current network and it can show the open TCP and UDP ports, in order to provide to the attacker the recognizment of the possible vulnerabilities in the network that can be exploit.
 
-![Telnet port](evidences/Telnet_Port_Localhost.png)
+`Nmap` over the network segment `192.168.50.0/24` displays the current elements on my local network:
 
-## TCP Packets from subnet `10.0.0.0/8`
-Script:
 ```
-from scapy.all import *
+$ sudo nmap -sn 192.168.50.0/24
 
-def print_pkt(pkt):
-    pkt.show()
-pkt = sniff(filter='tcp and net 10.0.0.0/8', prn=print_pkt)
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-28 20:07 EDT
+Nmap scan report for RT-AX86U-D900 (192.168.50.1)
+Host is up (0.0032s latency).
+MAC Address: 24:4B:FE:2F:D9:00 (Asustek Computer)
+Nmap scan report for HPA9AC82 (192.168.50.38)
+Host is up (0.12s latency).
+MAC Address: D0:BF:9C:A9:AC:82 (Hewlett Packard)
+Nmap scan report for 192.168.50.91 (192.168.50.91) ------------------------------------> Metasploitable server
+Host is up (0.0023s latency).
+MAC Address: 08:00:27:E7:85:4F (Oracle VirtualBox virtual NIC)
+Nmap scan report for 192.168.50.117 (192.168.50.117)
+Host is up (0.100s latency).
+MAC Address: 48:43:DD:DE:FC:70 (Amazon Technologies)
+Nmap scan report for C02CH3VAMD6N (192.168.50.165)
+Host is up (0.066s latency).
+MAC Address: 3C:22:FB:0C:70:B1 (Apple)
+Nmap scan report for LAPTOP-TP93I1KD (192.168.50.177)
+Host is up (0.0022s latency).
+MAC Address: D0:37:45:B2:6E:81 (Tp-link Technologies)
+Nmap scan report for android-1ae455ba040832c6 (192.168.50.179)
+Host is up (0.058s latency).
+MAC Address: 10:4F:A8:44:99:70 (Sony)
+Nmap scan report for Chromecast (192.168.50.240)
+Host is up (0.13s latency).
+MAC Address: F0:5C:77:32:37:07 (Google)
+Nmap scan report for kali (192.168.50.251)
+Host is up.
+Nmap done: 256 IP addresses (9 hosts up) scanned in 2.37 seconds
 ```
-Results:
-
-![tcp subnet](evidences/TCP_subnet.png)
-
-
-## Cracking WiFi networks.
