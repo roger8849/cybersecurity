@@ -586,3 +586,7 @@ As shown `OpenVAS` appliance is started in `https://localhost:9392`:
 
 <kbd>![OpenVAS Startup](evidences/3.8_OpenVASStartup.png)</kbd>
 <br />
+
+
+
+## WiFi Cracking with Wifite and Aircrack-ng
