@@ -582,12 +582,22 @@ sudo runuser -u _gvm -- gvmd --user=admin --new-password=admin  # change passwor
 sudo gvm-start                                                  # Starts in https://localhost:9392
 ```
 
-As shown `OpenVAS` appliance is started in `https://localhost:9392`:
+* As shown `OpenVAS` appliance is started in `https://localhost:9392`:
 
-<kbd>![OpenVAS Startup](evidences/3.8_OpenVASStartup.png)</kbd>
+<kbd>![OpenVAS Startup](evidences/3.8.1_OpenVASStartup.png)</kbd>
+<br />
 <br />
 
-
+* Then the task menu it's started, however it was not possible to fix the configuration to run the analysis over the sploitable server `192.168.50.91`. This error will be fixed in further research:
+<kbd>![OpenVAS Startup](evidences/3.8.1_OpenVASStartup.png)</kbd>
+<br />
+<br />
+<kbd>![OpenVAS Startup](evidences/3.8.2_OpenVASTaskMenu.png)</kbd>
+<br />
+<br />
+<kbd>![OpenVAS Startup](evidences/3.8.3_OpenVASAnalysiserror.png)</kbd>
+<br />
+<br />
 
 ## WiFi Cracking with Wifite and Aircrack-ng.
 
