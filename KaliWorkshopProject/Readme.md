@@ -589,9 +589,6 @@ sudo gvm-start                                                  # Starts in http
 <br />
 
 * Then the task menu it's started, however it was not possible to fix the configuration to run the analysis over the sploitable server `192.168.50.91`. This error will be fixed in further research:
-<kbd>![OpenVAS Startup](evidences/3.8.1_OpenVASStartup.png)</kbd>
-<br />
-<br />
 <kbd>![OpenVAS Startup](evidences/3.8.2_OpenVASTaskMenu.png)</kbd>
 <br />
 <br />
