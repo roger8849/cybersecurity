@@ -1,4 +1,4 @@
-# Kali Workshop hands on project.
+# Ethical Hacking using Kali Linux
 Roger Ramírez Espejo.<br />
 Software engineer, architect and enthusiast. <br />
 Cybersecurity Project - Kali linux workshop
