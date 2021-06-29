@@ -40,6 +40,7 @@ This section shows the following tools:
 - [Dmitry](https://tools.kali.org/information-gathering/dmitry): DMitry (Deepmagic Information Gathering Tool) is a UNIX/(GNU)Linux Command Line Application coded in C. DMitry has the ability to gather as much information as possible about a host. Base functionality is able to gather possible subdomains, email addresses, uptime information, tcp port scan, whois lookups, and more. 
 - [DNSEnum](https://tools.kali.org/information-gathering/dnsenum): Multithreaded perl script to enumerate DNS information of a domain and to discover non-contiguous ip blocks.
 - [Nmap](https://nmap.org/): Mapping appliance which display the details of the devices connected to the current network.
+- [Whatweb](https://tools.kali.org/web-applications/whatweb): WhatWeb identifies websites. Its goal is to answer the question, “What is that Website?”. WhatWeb recognises web technologies including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, web servers, and embedded devices. WhatWeb has over 1700 plugins, each to recognise something different. WhatWeb also identifies version numbers, email addresses, account IDs, web framework modules, SQL errors, and more.
 
 These tools are located under information gathering section in start menu in kali linux:
 
@@ -440,4 +441,131 @@ Nmap done: 1 IP address (1 host up) scanned in 0.70 seconds
 
 With the `ssh` appliance information an attacker can identify its vulnerabilities by searching them in [NVD: National vulnerable database](https://nvd.nist.gov/vuln/search/results?form_type=Basic&results_type=overview&query=OpenSSH&search_type=all):
 
-<kbd>![NVD](evidences/2.3.6_Nmap_OpenSSHVulnerabilities.png)</kbd>
+<kbd>![NVD Openssh vulnerabilities](evidences/2.3.6_Nmap_OpenSSHVulnerabilities.png)</kbd>
+
+<br />
+Also, `Nmap` can scan not only the `TCP` and also can scan the `UDP` ports by adding the option `-sU -F 192.168.50.91`, as follows:
+
+```
+$ sudo nmap -sU -F 192.168.50.91
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-28 16:53 EDT
+Nmap scan report for 192.168.50.91 (192.168.50.91)
+Host is up (0.00072s latency).
+Not shown: 54 closed ports, 44 open|filtered ports
+PORT     STATE SERVICE
+53/udp   open  domain ---------------------> UDP PORTS
+2049/udp open  nfs
+MAC Address: 08:00:27:E7:85:4F (Oracle VirtualBox virtual NIC)
+
+Nmap done: 1 IP address (1 host up) scanned in 56.26 seconds
+```
+
+### Whatweb to scan webservers.
+
+WhatWeb recognises web technologies including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, web servers, and embedded devices.
+
+This tool can be tested in the vulnerable server `192.168.50.91` which displays the web server information:
+
+```
+$ whatweb 192.168.50.91
+http://192.168.50.91 [200 OK] Apache[2.2.8], Country[RESERVED][ZZ], HTTPServer[Ubuntu Linux][Apache/2.2.8 (Ubuntu) DAV/2], IP[192.168.50.91], PHP[5.2.4-2ubuntu5.10], Title[Metasploitable2 - Linux], WebDAV[2], X-Powered-By[PHP/5.2.4-2ubuntu5.10]
+```
+
+As shown `whatweb` displays the information of the server, which is over `Ubuntu, Apache` and `PHP`. These tool can also be used to display information of webservers outside current network as the website of *Universidad nacional* as follows:
+
+```
+$ whatweb unal.edu.co  
+http://unal.edu.co [301 Moved Permanently] CloudFront, Country[UNITED STATES][US], HTTPServer[CloudFront], IP[13.35.105.88], RedirectLocation[https://unal.edu.co/], Title[301 Moved Permanently], UncommonHeaders[x-amz-cf-pop,x-amz-cf-id], Via-Proxy[1.1 ca1d5a4b52d08cd5e7ea6f85005bf085.cloudfront.net (CloudFront)]
+https://unal.edu.co/ [200 OK] Apache[2.2.15], Bootstrap, Content-Language[es], Country[UNITED STATES][US], Email[mediosdigitales@unal.edu.co], HTML5, HTTPServer[CentOS][Apache/2.2.15 (CentOS)], IP[13.35.105.97], JQuery, MetaGenerator[TYPO3 CMS], PHP[5.6.33], PoweredBy[TYPO3], Script[text/javascript], Title[Universidad Nacional de Colombia: Universidad Nacional de Colombia], UncommonHeaders[x-content-type-options,x-amz-cf-pop,x-amz-cf-id], Via-Proxy[1.1 0a72bb7be10458e1aefa37a097f21894.cloudfront.net (CloudFront)], X-Powered-By[PHP/5.6.33], X-UA-Compatible[IE=edge]
+```
+
+## Vulnerability Scan:
+
+This section displays different tools to scan vulnerabilities in the devices we want to attack/protect. The following tools were used:
+
+- [Nikto](https://tools.kali.org/information-gathering/nikto): Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers. It also checks for server configuration items such as the presence of multiple index files, HTTP server options, and will attempt to identify installed web servers and software. Scan items and plugins are frequently updated and can be automatically updated.
+- [Burp suite](https://tools.kali.org/information-gathering/nikto): Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers. It also checks for server configuration items such as the presence of multiple index files, HTTP server options, and will attempt to identify installed web servers and software. Scan items and plugins are frequently updated and can be automatically updated.
+
+These tools are under `vulnerability` menu in `Kali` tools:
+
+<kbd>![Kali Vulnerability menu](evidences/3.0_Vulnerabilities_Menu.png)</kbd>
+
+### Nikto to collect web server information.
+
+Nikto scans a web server and display the vulnerabilities of it. The command `nikto -h 192.168.50.91` displays the vulnerabilities on the Metasploitable host:
+```
+$ nikto -h 192.168.50.91
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          192.168.50.91
++ Target Hostname:    192.168.50.91
++ Target Port:        80
++ Start Time:         2021-06-28 17:05:54 (GMT-4)
+---------------------------------------------------------------------------
++ Server: Apache/2.2.8 (Ubuntu) DAV/2
++ Retrieved x-powered-by header: PHP/5.2.4-2ubuntu5.10
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Apache/2.2.8 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Uncommon header 'tcn' found, with contents: list
++ Apache mod_negotiation is enabled with MultiViews, which allows attackers to easily brute force file names. See http://www.wisec.it/sectou.php?id=4698ebdc59d15. The following alternatives for 'index' were found: index.php
++ Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
++ /phpinfo.php: Output from the phpinfo() function was found.
++ OSVDB-3268: /doc/: Directory indexing found.
++ OSVDB-48: /doc/: The /doc/ directory is browsable. This may be /usr/doc.
++ OSVDB-12184: /?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /?=PHPE9568F36-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /?=PHPE9568F34-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /?=PHPE9568F35-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-3092: /phpMyAdmin/changelog.php: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
++ Server may leak inodes via ETags, header found with file /phpMyAdmin/ChangeLog, inode: 92462, size: 40540, mtime: Tue Dec  9 12:24:00 2008
++ OSVDB-3092: /phpMyAdmin/ChangeLog: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
++ OSVDB-3268: /test/: Directory indexing found.
++ OSVDB-3092: /test/: This might be interesting...
++ OSVDB-3233: /phpinfo.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ OSVDB-3268: /icons/: Directory indexing found.
++ OSVDB-3233: /icons/README: Apache default file found.
++ /phpMyAdmin/: phpMyAdmin directory found
++ OSVDB-3092: /phpMyAdmin/Documentation.html: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
++ OSVDB-3092: /phpMyAdmin/README: phpMyAdmin is for managing MySQL databases, and should be protected or limited to authorized hosts.
+```
+
+If we take as an example the vulnerability `OSVDB-3092` this PHPMyAdmin risk is reported in: [CVE-2006-3092](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3092).
+
+<kbd>![PHPMyAdmin Vulnerability](evidences/3.1_PHPMyAdminVulnerability.png)</kbd>
+<br />
+<br />
+
+### Burp suite to track site information.
+Burp suite can tracks the files loaded for a site and analyze it's vulnerabilities and create a report which can be delivery in a security consultancy. 
+
+* First Burpsuite needs to be started: 
+
+<kbd>![Burpsuite menu](evidences/3.2_BurpsuiteKaliMenu.png)</kbd>
+<br />
+
+* The proxy url needs to be retrieved from the proxy tab in Burpsuite, in this case is `127.0.0.1:8080`
+
+<kbd>![Burpsuite proxy](evidences/3.3_BurpsuiteProxy.png)</kbd>
+<br />
+
+* The proxy previously retrieved needs to be configured in Firefox:
+
+<kbd>![Burpsuite Firefox](evidences/3.4_BurpsuiteFirefoxProxyConfiguration.png)</kbd>
+<br />
+
+* Last but not least, the *scope* site is configured so Burpsuite do not track all the websites visited by firefox. For this case the website `https://unal.edu.co` is configured:
+
+<kbd>![Unal Scope](evidences/3.5_BurpsuiteScopeConfiguration.png)</kbd>
+<br />
+
+
+Firefox will visit the website https://unal.edu.co and Burpsuite through its proxy will create a site map and will report the vulnerabilities of the site. *Unfortunately*, the vulnerabilities are only available in  the *Premium edition* of the tool. However, in this report OpenVAS is used to analyze and report vulnerabilities which will shown in the next section.
+
+<kbd>![Site Map](evidences/3.6_BurpsuiteUnalSiteMap.png)</kbd>
+<br />
+
+<kbd>![Burpsuite vulnerabilities](evidences/3.7_BurpsuiteVulnerabilitiesPremium.png)</kbd>
+<br />
