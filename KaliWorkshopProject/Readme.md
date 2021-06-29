@@ -10,7 +10,7 @@ This project shows the usage of several tools provided by [Kali linux](https://w
 
 <kbd>![Kali versions](evidences/0.1_Kali_Versions.png)</kbd>
 
-- [Bare Metal](https://www.kali.org/get-kali/#kali-bare-metal): Installable version which was intalled in an old laptop. This version was used to execute the Wifi cracking section.
+- [Bare Metal](https://www.kali.org/get-kali/#kali-bare-metal): Installable version which was installed in an old laptop. This version was used to execute the Wifi cracking section.
 - [Virtual Box - VM](https://www.kali.org/get-kali/#kali-virtual-machines): Virtual box version of the operative system. Used to execute the rest of the project except the Wifi cracking section.
 - [Metasploitable - VM](): Vulnerable Server which will be during the workshop to show common vulnerabilities of the servers, displayed by the tools used here.
 
@@ -30,9 +30,9 @@ Vulnerable server configuration on `192.168.50.91`:
 <br />
 
 ### Disclaimer
-This Workshop and it's results were performed only for educational purposes. Any misusage of the information of this report is not responsibility of the author. Discresion is adviced.
+This Workshop and it's results were performed only for educational purposes. Any misusage of the information of this report is not responsibility of the author. Discretion is advised.
 
-Depending on the time of reading of this report some features might changed or replaced by diferent tools.
+Depending on the time of reading of this report some features might changed or replaced by different tools.
 
 ## Information Gathering.
 This section shows the following tools:
@@ -40,7 +40,7 @@ This section shows the following tools:
 - [Dmitry](https://tools.kali.org/information-gathering/dmitry): DMitry (Deepmagic Information Gathering Tool) is a UNIX/(GNU)Linux Command Line Application coded in C. DMitry has the ability to gather as much information as possible about a host. Base functionality is able to gather possible subdomains, email addresses, uptime information, tcp port scan, whois lookups, and more. 
 - [DNSEnum](https://tools.kali.org/information-gathering/dnsenum): Multithreaded perl script to enumerate DNS information of a domain and to discover non-contiguous ip blocks.
 - [Nmap](https://nmap.org/): Mapping appliance which display the details of the devices connected to the current network.
-- [Whatweb](https://tools.kali.org/web-applications/whatweb): WhatWeb identifies websites. Its goal is to answer the question, “What is that Website?”. WhatWeb recognises web technologies including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, web servers, and embedded devices. WhatWeb has over 1700 plugins, each to recognise something different. WhatWeb also identifies version numbers, email addresses, account IDs, web framework modules, SQL errors, and more.
+- [Whatweb](https://tools.kali.org/web-applications/whatweb): WhatWeb identifies websites. Its goal is to answer the question, “What is that Website?”. WhatWeb recognises web technologies including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, web servers, and embedded devices. WhatWeb has over 1700 plugins, each to recognize something different. WhatWeb also identifies version numbers, email addresses, account IDs, web framework modules, SQL errors, and more.
 
 These tools are located under information gathering section in start menu in kali linux:
 
@@ -243,8 +243,8 @@ zsh: segmentation fault  dmitry -pb 192.168.50.91
 <br />
 <br />
 
-### DNS Enum for passive recognaisse
-DNS enum allows to enumerate all the DNS information for the domain [Rappi.com](https://rappi.com) to detect it's ip blocks. This information is retrieved by the attacker to recognaisse the network information of it's domain.
+### DNS Enum for passive reconnaissance
+DNS enum allows to enumerate all the DNS information for the domain [Rappi.com](https://rappi.com) to detect it's ip blocks. This information is retrieved by the attacker to reconnaissance the network information of it's domain.
 
 ```
 $ dnsenum rappi.com                                                                                                                                                                                                                  130 ⨯
@@ -343,9 +343,9 @@ done.
 <br />
 <br />
 
-### Nmap for active Recoginaisse of the servers.
+### Nmap for active reconnaissance of the servers.
 
-`Nmap` is one of the most important tools in order to retrieve information of the network. Basically scans the devices connected to the current network and it can show the open TCP and UDP ports, in order to provide to the attacker the recognizment of the possible vulnerabilities in the network that can be exploit.
+`Nmap` is one of the most important tools in order to retrieve information of the network. Basically scans the devices connected to the current network and it can show the open TCP and UDP ports, in order to provide to the attacker the recognizement of the possible vulnerabilities in the network that can be exploit.
 
 `Nmap` over the network segment `192.168.50.0/24` displays the current elements on my local network:
 
@@ -683,7 +683,3 @@ sudo aircrack-ng handshake_RRamirezDual_24-4B-FE-2F-D9-00_2021-06-27T15-30-47.ca
 * Learning Kali Course by Malcolm Shore: https://www.linkedin.com/learning/learning-kali-linux-2/installing-additional-applications-into-kali?u=57692769
 * Ethical Hcking: Wireless networks by Malcolm Shore: https://www.linkedin.com/learning/ethical-hacking-wireless-networks/using-wifite-and-aircrack-ng-to-test-wpa-passwords-2?u=57692769
 * Greenbone vulnerability management: https://www.greenbone.net/en/vulnerability-management/
-* 
-
-
-
